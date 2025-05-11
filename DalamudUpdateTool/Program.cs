@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace DalamudUpdateTool {
-    class Program {
+    static class Program {
         private static FileInfo ResolveFilePath() {
             string appDataDir;
 
@@ -49,13 +49,11 @@ namespace DalamudUpdateTool {
             Console.Write(contents);
         }
 
-        private static FileInfo BackupFile(FileInfo file) {
+        private static void BackupFile(FileInfo file) {
             var now = DateTime.Now;
 
             var newName = file.FullName + $"{now:dd-MM-yyyy--HH-mm}";
             File.Copy(file.FullName, newName, true);
-
-            return new FileInfo(newName);
         }
 
         private static int Main(string[] args) {

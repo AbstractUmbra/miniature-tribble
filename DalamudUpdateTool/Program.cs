@@ -82,7 +82,6 @@ namespace DalamudUpdateTool {
                     Console.WriteLine($"betaKey: {betaKey}");
                     Console.WriteLine($"noBackup: {noBackup}");
                     Console.WriteLine($"dryRun: {dryRun}");
-                    Environment.Exit(0);
 
                     var configFile = ResolveFilePath();
 

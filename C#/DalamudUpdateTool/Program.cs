@@ -52,7 +52,17 @@ namespace DalamudUpdateTool {
         private static void BackupFile(FileInfo file) {
             var now = DateTime.Now;
 
-            var newName = file.FullName + $"{now:dd-MM-yyyy--HH-mm}";
+            var dir = Path.GetDirectoryName(file.FullName);
+            if (string.IsNullOrEmpty(dir)) {
+                throw new ApplicationException("The XIVLauncher directory could not be located.");
+            }
+
+            var fileName = Path.GetFileNameWithoutExtension(file.FullName);
+
+            var newName = Path.Combine(dir, fileName) +
+                          $".backup-{now:dd-MM-yyyy--HH-mm}.json";
+
+            Console.WriteLine(newName);
             File.Copy(file.FullName, newName, true);
         }
 

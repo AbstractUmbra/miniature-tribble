@@ -15,7 +15,7 @@ namespace DalamudUpdateTool {
                 throw;
             }
 
-            if (appDataDir == "") {
+            if (string.IsNullOrEmpty(appDataDir)) {
                 throw new ApplicationException("The AppData directory could not be located.");
             }
 

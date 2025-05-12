@@ -42,7 +42,7 @@ namespace DalamudUpdateTool {
             var tempFile = Path.GetTempFileName();
             await File.WriteAllTextAsync(tempFile, contents);
 
-            File.Move(tempFile, file.FullName);
+            File.Move(tempFile, file.FullName, true);
         }
 
         private static void PrintEditedContents(string contents) {
